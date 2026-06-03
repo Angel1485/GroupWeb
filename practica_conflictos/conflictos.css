@@ -1,0 +1,91 @@
+/* ==========================================================================
+   ESTILOS BASE - PROPENSO A CONFLICTOS VISUALES (KRAKEDEV)
+   Instrucciones: Modificar las clases de las tarjetas o los colores en 
+   simultáneo desatará los conflictos de mezcla de diseño en la Sesión 4.
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f6f9;
+    color: #333;
+    line-height: 1.6;
+}
+
+.main-header {
+    background-color: #1a1a1a; /* Estilo oscuro institucional de KRAKEDEV */
+    color: #ffffff;
+    text-align: center;
+    padding: 2.5rem 1rem;
+    border-bottom: 4px solid #8b0000; /* Línea de acento roja */
+}
+
+.main-header h1 {
+    font-size: 2.2rem;
+    margin-bottom: 0.5rem;
+}
+
+/* --- CUADRÍCULA CRÍTICA (Propensa a choques de maquetación) --- */
+.dashboard {
+    max-width: 1200px;
+    margin: 3rem auto;
+    padding: 0 1rem;
+}
+
+.team-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+}
+
+/* --- TARJETA DE INTEGRANTE (Zona de Choque de Estilos) --- */
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+    padding: 2rem;
+    border-top: 5px solid #1a1a1a; /* 👈 PROPIEDAD CLAVE: Cambiar este color generará conflicto */
+    text-align: center;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 20px rgba(139, 0, 0, 0.15);
+}
+
+.card h2 {
+    color: #1a1a1a;
+    font-size: 1.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.card .role {
+    display: inline-block;
+    background-color: #fdf2f2;
+    color: #8b0000;
+    padding: 0.3rem 1rem;
+    border-radius: 50px;
+    font-size: 0.85rem;
+    font-weight: 700;
+    margin-bottom: 1.2rem;
+}
+
+.card .bio {
+    font-size: 0.95rem;
+    color: #555555;
+}
+
+.main-footer {
+    text-align: center;
+    padding: 2rem;
+    background-color: #1a1a1a;
+    color: #ffffff;
+    font-size: 0.85rem;
+    margin-top: 5rem;
+}
