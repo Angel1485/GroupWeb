@@ -249,3 +249,94 @@ th {
         right: 20px;
     }
 }
+
+/* Botón de conceptos */
+.conceptos-boton {
+    text-align: center;
+    margin: 2rem 0;
+    padding: 1rem;
+    background: #fff0e0;
+    border-radius: 2rem;
+    border: 2px solid #ff8c42;
+}
+
+.btn-conceptos {
+    display: inline-block;
+    background: #ff8c42;
+    color: white;
+    padding: 12px 28px;
+    border-radius: 60px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn-conceptos:hover {
+    background: #e07a2e;
+    transform: translateY(-3px);
+}
+
+/* Página de conceptos */
+.conceptos-page {
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.conceptos-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 1.8rem;
+    margin: 2rem 0;
+}
+
+.conceptos-card {
+    background: white;
+    border-radius: 1.5rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    border-left: 6px solid #2c7da0;
+    transition: transform 0.2s;
+}
+
+.conceptos-card:hover {
+    transform: translateY(-5px);
+}
+
+.conceptos-card h3 {
+    color: #0f3b4c;
+    font-size: 1.4rem;
+    margin-bottom: 0.8rem;
+}
+
+.conceptos-card p {
+    color: #2c3e4e;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+}
+
+.conceptos-formula {
+    background: #eef2fa;
+    padding: 0.6rem 1rem;
+    border-radius: 1rem;
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #1f5e6e;
+    text-align: center;
+}
+
+.btn-regreso {
+    display: inline-block;
+    background: #2c7da0;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 40px;
+    text-decoration: none;
+    font-weight: bold;
+    margin-bottom: 2rem;
+    transition: 0.2s;
+}
+
+.btn-regreso:hover {
+    background: #1f5e6e;
+    transform: translateX(-5px);
+}
