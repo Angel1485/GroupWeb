@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>MathFinance: Simulador de Créditos | Matemática Financiera</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="app-container">
+    <div class="hero">
+        <div>
+            <h1>📊 Matemática Financiera <span>Unidad 1</span></h1>
+            <p style="opacity:0.8; margin-top:8px;">Valor presente · Valor futuro · Interés Simple/Compuesto · Amortización Francesa y Alemana</p>
+        </div>
+        <div class="badge-math">💰 Simulador de Créditos | Tasas Ecuador (referencial ~9.5% anual)</div>
+    </div>
+
+    <div class="dashboard">
+        <!-- REGISTRO CLIENTES -->
+        <div class="card">
+            <h2>📋 Registro de Cliente</h2>
+            <label>Nombre completo</label>
+            <input type="text" id="clientName" placeholder="Ej: María González">
+            <label>Identificación (cédula)</label>
+            <input type="text" id="clientId" placeholder="0998765432">
+            <label>Email / contacto</label>
+            <input type="email" id="clientEmail" placeholder="cliente@email.com">
+            <button id="registerClientBtn">➕ Registrar Cliente</button>
+            <div class="info-math" style="margin-top:12px;">
+                <strong>Clientes registrados:</strong> <span id="clientCount">0</span>
+                <ul id="clientListSimple" style="margin-top:5px; font-size:12px;"></ul>
+            </div>
+        </div>
+
+        <!-- SIMULACIÓN CRÉDITO con selector de cliente -->
+        <div class="card">
+            <h2>📈 Solicitar Crédito</h2>
+            <label>Seleccionar Cliente</label>
+            <select id="loanClientSelect">
+                <option value="">-- Seleccionar cliente --</option>
+            </select>
+            <label>Monto solicitado ($)</label>
+            <input type="number" id="loanAmount" value="10000" step="1000">
+            <label>Plazo (meses)</label>
+            <input type="number" id="loanMonths" value="12">
+            <label>Tasa de interés anual (%)</label>
+            <input type="number" id="interestRate" value="9.5" step="0.5">
+            <small style="color:#2c7da0;">*Tasa referencial Ecuador (promedio instituciones financieras)</small>
+            <label>Sistema de amortización</label>
+            <select id="amortType">
+                <option value="frances">Sistema Francés (cuota fija)</option>
+                <option value="aleman">Sistema Alemán (cuota decreciente)</option>
+            </select>
+            <button id="simulateBtn">📐 Simular Crédito</button>
+            <div id="simulationSummary" style="margin-top: 12px; background:#f0f7fc; border-radius:1rem; padding:0.8rem;"></div>
+        </div>
+
+        <!-- REGISTRO DE PAGOS con selector de cliente -->
+        <div class="card">
+            <h2>💵 Registro de Pagos</h2>
+            <label>Seleccionar Cliente</label>
+            <select id="paymentClientSelect">
+                <option value="">-- Seleccionar cliente --</option>
+            </select>
+            <label>Número de cuota a pagar</label>
+            <input type="number" id="paymentQuotaNum" placeholder="Ej: 1">
+            <div class="flex-btns">
+                <button id="registerPaymentBtn" style="background:#2c6e49;">💰 Registrar Pago</button>
+                <button id="resetLoanStatusBtn" class="btn-secondary">🔄 Reiniciar crédito actual</button>
+            </div>
+            <div id="paymentStatusMsg" style="margin-top:10px; font-size:0.8rem;"></div>
+            <div id="paymentDetailsMsg" style="margin-top:10px; font-size:0.9rem; font-weight:bold; background:#eef5fa; padding:8px; border-radius:8px;"></div>
+            <div class="info-math">
+                <strong>📌 Estados:</strong> Activo / Pagos atrasados / Cancelado.
+                <br> <span id="activeCreditInfo">Sin crédito activo para el cliente seleccionado.</span>
+            </div>
+        </div>
+    </div>
+
+    <!-- TABLA DE AMORTIZACIÓN DINÁMICA -->
+    <div class="card card-full">
+        <h2>📄 Tabla de Amortización Detallada</h2>
+        <div id="amortTableContainer" class="table-wrapper">
+            <p style="text-align:center; color:#5e6f8d;">👉 Simula un crédito para generar la tabla de amortización (francés/alemán)</p>
+        </div>
+    </div>
+
+    <!-- TEST DE EVALUACIÓN (5 preguntas) -->
+    <div class="test-section" id="testSection">
+        <div class="test-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+            <h2 style="margin: 0;">📝 Test de Evaluación | Matemática Financiera</h2>
+            <button id="toggleTestBtn" style="width: auto; padding: 0.5rem 1.5rem; background: #2c7da0; margin: 0;">📋 Mostrar Test</button>
+        </div>
+        <div id="testContent" style="display: none;">
+            <div id="quizContainer"></div>
+            <button id="submitQuizBtn" style="background:#1f7a8c; width:auto; padding:0.6rem 1.5rem; margin-top: 1rem;">✅ Corregir Test</button>
+            <div id="quizResult" class="result-test"></div>
+        </div>
+    </div>
+    <footer style="text-align:center; margin:2rem 0 1rem; font-size:0.75rem; color:#2c5e6e;">📐 Desarrollo matemático: Interés compuesto mensual, fórmulas cuota fija, alemán (capital constante). Unidad 1 · Matemática Financiera · Proyecto grupal Vercel + GitHub</footer>
+</div>
+
+<!-- Botón flotante para ir al test -->
+<button class="floating-test-btn" id="floatingTestBtn" title="Ir al Test de Evaluación">📝</button>
+
+<script src="script.js"></script>
+</body>
+</html>

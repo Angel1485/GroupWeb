@@ -1,0 +1,251 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', 'Inter', system-ui, -apple-system, 'Roboto', sans-serif;
+}
+
+body {
+    background: linear-gradient(145deg, #e9f0fc 0%, #d9e3f0 100%);
+    padding: 2rem 1.5rem;
+    color: #1a2c3e;
+}
+
+.app-container {
+    max-width: 1600px;
+    margin: 0 auto;
+}
+
+.hero {
+    background: #0b2b3b;
+    border-radius: 2rem;
+    padding: 1.5rem 2rem;
+    margin-bottom: 2rem;
+    color: white;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hero h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: -0.3px;
+}
+
+.hero h1 span {
+    background: #f5b042;
+    padding: 0.2rem 0.8rem;
+    border-radius: 40px;
+    font-size: 1rem;
+    margin-left: 12px;
+    color: #1e2a36;
+}
+
+.badge-math {
+    background: #1f5e6e;
+    padding: 0.5rem 1rem;
+    border-radius: 60px;
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+.dashboard {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+    gap: 1.8rem;
+    margin-bottom: 2rem;
+}
+
+.card {
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(2px);
+    border-radius: 1.8rem;
+    padding: 1.5rem;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+    transition: all 0.2s;
+    border: 1px solid rgba(255,255,255,0.5);
+}
+
+.card-full {
+    grid-column: 1 / -1;
+}
+
+.card h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    border-left: 5px solid #2c7da0;
+    padding-left: 1rem;
+    margin-bottom: 1.2rem;
+    color: #0f3b4c;
+}
+
+label {
+    font-weight: 600;
+    display: block;
+    margin-top: 0.8rem;
+    margin-bottom: 0.3rem;
+    color: #1f5063;
+    font-size: 0.85rem;
+}
+
+input, select, button {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    border-radius: 1rem;
+    border: 1px solid #cbd5e1;
+    background: white;
+    font-size: 0.95rem;
+    transition: 0.2s;
+}
+
+select {
+    cursor: pointer;
+}
+
+select:hover {
+    border-color: #2c7da0;
+}
+
+button {
+    background: #2c7da0;
+    color: white;
+    font-weight: bold;
+    border: none;
+    cursor: pointer;
+    margin-top: 1rem;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+button:hover {
+    background: #1f5e6e;
+    transform: translateY(-2px);
+}
+
+.btn-secondary {
+    background: #61a5c2;
+}
+
+.table-wrapper {
+    overflow-x: auto;
+    margin-top: 1rem;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+}
+
+th, td {
+    padding: 0.7rem 0.4rem;
+    text-align: right;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+th {
+    background: #eef2f9;
+    font-weight: 600;
+    text-align: center;
+}
+
+.test-section {
+    background: #fff8e7;
+    border-radius: 1.5rem;
+    padding: 1.8rem;
+    margin-top: 2rem;
+    border: 1px solid #ffe6b3;
+}
+
+.question {
+    margin-bottom: 1.2rem;
+    background: white;
+    padding: 1rem;
+    border-radius: 1rem;
+}
+
+.result-test {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.flex-btns {
+    display: flex;
+    gap: 1rem;
+}
+
+.flex-btns button {
+    flex: 1;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 1rem;
+    }
+    .hero {
+        flex-direction: column;
+        align-items: start;
+        gap: 10px;
+    }
+}
+
+.info-math {
+    background: #eef5fa;
+    border-radius: 1rem;
+    padding: 0.8rem;
+    margin-top: 1rem;
+    font-size: 0.8rem;
+}
+
+#paymentDetailsMsg {
+    animation: fadeIn 0.5s ease-in;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Botón flotante para ir al test */
+.floating-test-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background: #2c7da0;
+    color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    transition: all 0.3s;
+    z-index: 1000;
+    border: none;
+}
+
+.floating-test-btn:hover {
+    background: #1f5e6e;
+    transform: scale(1.1);
+}
+
+@media (max-width: 700px) {
+    .floating-test-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        bottom: 20px;
+        right: 20px;
+    }
+}
