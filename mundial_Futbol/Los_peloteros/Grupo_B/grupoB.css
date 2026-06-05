@@ -5,16 +5,39 @@ body {
     text-align: center;
     padding: 2rem;
 }
+
 .container {
-    background: rgba(0,0,0,0.7);
+    background: rgba(0,0,0,0.8);
     border-radius: 20px;
     padding: 2rem;
     width: 80%;
+    max-width: 600px;
     margin: auto;
 }
-.equipos div {
-    font-size: 2rem;
-    margin: 1rem;
+
+h1 {
+    margin-bottom: 2rem;
+    font-size: 2.5rem;
+}
+
+.equipo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem 0;
     padding: 0.5rem;
     border-bottom: 1px solid gold;
+    font-size: 1.5rem;
+}
+
+.bandera {
+    width: 40px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+.pais {
+    font-weight: bold;
 }
