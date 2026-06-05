@@ -1,0 +1,20 @@
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #1e3c72, #2a5298);
+    color: white;
+    text-align: center;
+    padding: 2rem;
+}
+.container {
+    background: rgba(0,0,0,0.7);
+    border-radius: 20px;
+    padding: 2rem;
+    width: 80%;
+    margin: auto;
+}
+.equipos div {
+    font-size: 2rem;
+    margin: 1rem;
+    padding: 0.5rem;
+    border-bottom: 1px solid gold;
+}
