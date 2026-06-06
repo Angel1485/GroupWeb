@@ -41,3 +41,35 @@ h1 {
 .pais {
     font-weight: bold;
 }
+
+/* Botón volver al inicio */
+.boton-volver {
+    position: fixed;
+    top: 20px;
+    left: 20px;
+    z-index: 100;
+}
+
+.btn-inicio {
+    display: inline-block;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1a1a2e;
+    text-decoration: none;
+    padding: 10px 20px;
+    border-radius: 50px;
+    font-weight: bold;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.btn-inicio:hover {
+    transform: translateX(-5px);
+    background: linear-gradient(135deg, #FFE44D, #FFB347);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+}
+
+.btn-inicio:active {
+    transform: translateX(-2px);
+}
