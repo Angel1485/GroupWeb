@@ -1,53 +1,70 @@
+/* ========== ESTILOS BASE ========== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
     font-family: 'Arial', sans-serif;
     background: linear-gradient(135deg, #2b5876, #4e4376);
     color: white;
     text-align: center;
-    padding: 2rem;
+    padding: 1rem;
+    min-height: 100vh;
 }
 
+/* ========== CONTENEDOR PRINCIPAL ========== */
 .container {
-    background: rgba(0,0,0,0.8);
+    background: rgba(0, 0, 0, 0.8);
     border-radius: 20px;
-    padding: 2rem;
-    width: 80%;
+    padding: 1.5rem;
+    width: 95%;
     max-width: 600px;
-    margin: auto;
+    margin: 60px auto 20px auto;
 }
 
 h1 {
-    margin-bottom: 2rem;
-    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+    font-size: 2rem;
 }
 
+/* ========== EQUIPOS ========== */
 .equipo {
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 1rem;
-    margin: 1.5rem 0;
-    padding: 0.5rem;
+    margin: 1rem 0;
+    padding: 0.8rem;
     border-bottom: 1px solid silver;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+}
+
+.equipo:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 10px;
+    transform: scale(1.02);
 }
 
 .bandera {
-    width: 40px;
+    width: 35px;
     height: auto;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
 }
 
 .pais {
     font-weight: bold;
 }
 
-/* Botón volver al inicio */
+/* ========== BOTÓN VOLVER ========== */
 .boton-volver {
     position: fixed;
-    top: 20px;
-    left: 20px;
-    z-index: 100;
+    top: 15px;
+    left: 15px;
+    z-index: 1000;
 }
 
 .btn-inicio {
@@ -55,21 +72,371 @@ h1 {
     background: linear-gradient(135deg, #FFD700, #FFA500);
     color: #1a1a2e;
     text-decoration: none;
-    padding: 10px 20px;
+    padding: 8px 16px;
     border-radius: 50px;
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 0.9rem;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 .btn-inicio:hover {
     transform: translateX(-5px);
     background: linear-gradient(135deg, #FFE44D, #FFB347);
-    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
 }
 
 .btn-inicio:active {
     transform: translateX(-2px);
+}
+
+/* ========== JUGADORES ========== */
+.container-jugadores {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    width: 95%;
+    max-width: 600px;
+    margin: 20px auto;
+    text-align: center;
+}
+
+.container-jugadores h2 {
+    color: #FFD700;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.jugadores-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.jugador {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.jugador:hover {
+    transform: translateY(-5px);
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.jugador h3 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+}
+
+.jugador p {
+    font-size: 0.8rem;
+    opacity: 0.8;
+}
+
+/* ========== INFORMACIÓN COMPLEMENTARIA ========== */
+.container-info {
+    background: rgba(0, 0, 0, 0.75);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 1.5rem;
+    width: 95%;
+    max-width: 600px;
+    margin: 20px auto;
+}
+
+.container-info h2 {
+    color: #FFD700;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+}
+
+.info-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 1rem;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+.info-card h3 {
+    color: #FFA500;
+    margin-bottom: 0.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1.1rem;
+}
+
+.info-card ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.info-card li {
+    margin: 0.5rem 0;
+    padding-left: 1.5rem;
+    position: relative;
+    font-size: 0.9rem;
+    line-height: 1.4;
+}
+
+.info-card li::before {
+    content: "⚽";
+    position: absolute;
+    left: 0;
+}
+
+/* ========== RESPONSIVE PARA TABLETS (768px - 1024px) ========== */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .container, .container-jugadores, .container-info {
+        max-width: 80%;
+    }
+    
+    h1 {
+        font-size: 2.2rem;
+    }
+    
+    .equipo {
+        font-size: 1.3rem;
+    }
+    
+    .jugadores-grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.2rem;
+    }
+}
+
+/* ========== RESPONSIVE PARA CELULARES GRANDES (481px - 768px) ========== */
+@media (max-width: 768px) {
+    body {
+        padding: 0.8rem;
+    }
+    
+    .container {
+        padding: 1rem;
+        margin: 55px auto 15px auto;
+        width: 98%;
+    }
+    
+    h1 {
+        font-size: 1.6rem;
+        margin-bottom: 1rem;
+    }
+    
+    .equipo {
+        margin: 0.8rem 0;
+        padding: 0.6rem;
+        font-size: 1rem;
+        gap: 0.8rem;
+    }
+    
+    .bandera {
+        width: 30px;
+    }
+    
+    .btn-inicio {
+        padding: 7px 14px;
+        font-size: 0.8rem;
+    }
+    
+    .container-jugadores, .container-info {
+        padding: 1rem;
+        width: 98%;
+        margin: 15px auto;
+    }
+    
+    .container-jugadores h2, .container-info h2 {
+        font-size: 1.2rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .jugadores-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 0.8rem;
+    }
+    
+    .jugador {
+        padding: 0.8rem;
+    }
+    
+    .jugador h3 {
+        font-size: 0.9rem;
+    }
+    
+    .jugador p {
+        font-size: 0.75rem;
+    }
+    
+    .info-card {
+        padding: 0.8rem;
+    }
+    
+    .info-card h3 {
+        font-size: 1rem;
+    }
+    
+    .info-card li {
+        font-size: 0.85rem;
+        padding-left: 1.3rem;
+    }
+    
+    .info-card li::before {
+        content: "•";
+    }
+}
+
+/* ========== RESPONSIVE PARA CELULARES PEQUEÑOS (menos de 480px) ========== */
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+    }
+    
+    .container {
+        padding: 0.8rem;
+        margin: 50px auto 10px auto;
+    }
+    
+    h1 {
+        font-size: 1.3rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .equipo {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin: 0.6rem 0;
+        padding: 0.5rem;
+    }
+    
+    .bandera {
+        width: 35px;
+    }
+    
+    .btn-inicio {
+        padding: 6px 12px;
+        font-size: 0.7rem;
+    }
+    
+    .btn-inicio span {
+        display: none;
+    }
+    
+    .btn-inicio::after {
+        content: "Inicio";
+    }
+    
+    .container-jugadores, .container-info {
+        padding: 0.8rem;
+    }
+    
+    .container-jugadores h2, .container-info h2 {
+        font-size: 1rem;
+    }
+    
+    .jugadores-grid {
+        grid-template-columns: 1fr;
+        gap: 0.6rem;
+    }
+    
+    .jugador {
+        padding: 0.6rem;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        text-align: left;
+        gap: 1rem;
+    }
+    
+    .jugador h3 {
+        margin: 0;
+        font-size: 0.9rem;
+        flex: 1;
+    }
+    
+    .jugador p {
+        margin: 0;
+        font-size: 0.75rem;
+    }
+    
+    .info-card {
+        padding: 0.6rem;
+    }
+    
+    .info-card h3 {
+        font-size: 0.9rem;
+    }
+    
+    .info-card li {
+        font-size: 0.8rem;
+        padding-left: 1.2rem;
+        margin: 0.4rem 0;
+    }
+}
+
+/* ========== RESPONSIVE PARA PANTALLAS MUY GRANDES (más de 1200px) ========== */
+@media (min-width: 1200px) {
+    .container, .container-jugadores, .container-info {
+        max-width: 700px;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    .equipo {
+        font-size: 1.5rem;
+    }
+    
+    .bandera {
+        width: 45px;
+    }
+    
+    .jugador h3 {
+        font-size: 1.1rem;
+    }
+    
+    .jugador p {
+        font-size: 0.9rem;
+    }
+}
+
+/* ========== ANIMACIONES ========== */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.container, .container-jugadores, .container-info {
+    animation: fadeIn 0.5s ease-out;
+}
+
+/* ========== ACCESIBILIDAD ========== */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* ========== MEJORAS PARA TACTIL ========== */
+@media (hover: none) and (pointer: coarse) {
+    .btn-inicio:active {
+        transform: scale(0.95);
+    }
+    
+    .equipo:active, .jugador:active, .info-card:active {
+        background: rgba(255, 255, 255, 0.2);
+    }
 }
