@@ -12,7 +12,7 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 2rem;
+    padding: 1rem;
     position: relative;
 }
 
@@ -23,7 +23,7 @@ body::before {
     bottom: 0;
     left: 0;
     right: 0;
-    height: 80px;
+    height: 60px;
     background: repeating-linear-gradient(
         45deg,
         #2d6a2d,
@@ -35,6 +35,36 @@ body::before {
     z-index: 0;
 }
 
+/* ========== BANDERA DE ECUADOR ========== */
+.bandera-ecuador {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 1rem;
+    animation: fadeInDown 0.8s ease;
+}
+
+.flag-ec {
+    width: 50px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+.flag-ec:hover {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.ecuador-text {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #FFD700;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+}
+
 h1 {
     font-size: 2.5rem;
     text-align: center;
@@ -43,40 +73,46 @@ h1 {
     -webkit-background-clip: text;
     background-clip: text;
     color: transparent;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
     animation: fadeInDown 0.8s ease;
+    padding: 0 0.5rem;
 }
 
 h2 {
     font-size: 1.2rem;
     text-align: center;
     color: #e0e0e0;
-    margin-bottom: 2.5rem;
+    margin-bottom: 2rem;
     font-weight: normal;
-    background: rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, 0.5);
     display: inline-block;
     padding: 0.5rem 1.5rem;
     border-radius: 50px;
     backdrop-filter: blur(5px);
     animation: fadeInUp 0.8s ease;
+    max-width: 90%;
 }
 
 nav {
-    background: rgba(255,255,255,0.1);
+    background: rgba(255, 255, 255, 0.1);
     backdrop-filter: blur(10px);
     border-radius: 20px;
-    padding: 2rem 3rem;
-    box-shadow: 0 8px 32px rgba(0,0,0,0.3);
-    border: 1px solid rgba(255,255,255,0.2);
+    padding: 1.5rem 2rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
     animation: fadeIn 1s ease;
+    width: 95%;
+    max-width: 800px;
+    margin: 0 auto;
 }
 
 nav ul {
     list-style: none;
     display: flex;
-    gap: 2rem;
+    gap: 1.5rem;
     flex-wrap: wrap;
     justify-content: center;
+    align-items: center;
 }
 
 nav li {
@@ -86,16 +122,17 @@ nav li {
 nav a {
     display: inline-block;
     text-decoration: none;
-    font-size: 1.5rem;
+    font-size: 1.3rem;
     font-weight: bold;
-    padding: 1rem 2rem;
+    padding: 0.8rem 1.5rem;
     border-radius: 50px;
     background: linear-gradient(135deg, #FFD700, #FFA500);
     color: #1a1a2e;
     transition: all 0.3s ease;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
+    text-align: center;
 }
 
 nav a::before {
@@ -105,7 +142,7 @@ nav a::before {
     top: 50%;
     transform: translateY(-50%);
     transition: left 0.3s ease;
-    font-size: 1.2rem;
+    font-size: 1.1rem;
 }
 
 nav a:hover::before {
@@ -114,13 +151,13 @@ nav a:hover::before {
 
 nav a:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
     background: linear-gradient(135deg, #FFE44D, #FFB347);
     padding-left: 2.5rem;
-    padding-right: 2rem;
+    padding-right: 1.5rem;
 }
 
-/* Animaciones */
+/* ========== ANIMACIONES ========== */
 @keyframes fadeIn {
     from {
         opacity: 0;
@@ -154,33 +191,98 @@ nav a:hover {
     }
 }
 
-/* Responsive */
+/* ========== RESPONSIVE PARA TABLETS (768px - 1024px) ========== */
+@media (max-width: 1024px) and (min-width: 769px) {
+    body {
+        justify-content: center;
+        text-align: center;
+    }
+    
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1rem;
+    }
+    
+    nav {
+        padding: 1.5rem;
+        margin: 0 auto;
+    }
+    
+    nav a {
+        font-size: 1.2rem;
+        padding: 0.7rem 1.3rem;
+    }
+}
+
+/* ========== RESPONSIVE PARA CELULARES GRANDES (481px - 768px) ========== */
 @media (max-width: 768px) {
     body {
-        padding: 1rem;
+        padding: 0.8rem;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    /* Efecto césped más pequeño */
+    body::before {
+        height: 40px;
+    }
+    
+    .bandera-ecuador {
+        justify-content: center;
+    }
+    
+    .flag-ec {
+        width: 40px;
+    }
+    
+    .ecuador-text {
+        font-size: 1rem;
     }
     
     h1 {
         font-size: 1.5rem;
+        margin-bottom: 0.8rem;
+        text-align: center;
     }
     
     h2 {
-        font-size: 0.9rem;
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
+        padding: 0.4rem 1rem;
+        text-align: center;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
     }
     
     nav {
         padding: 1rem;
-    }
-    
-    nav a {
-        font-size: 1rem;
-        padding: 0.7rem 1.5rem;
+        width: 98%;
+        margin: 0 auto;
+        text-align: center;
     }
     
     nav ul {
-        gap: 1rem;
-        flex-direction: column;
+        gap: 0.8rem;
+        justify-content: center;
         align-items: center;
+    }
+    
+    nav li {
+        width: auto;
+    }
+    
+    nav a {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+        text-align: center;
+    }
+    
+    nav a::before {
+        font-size: 0.9rem;
     }
     
     nav a:hover::before {
@@ -189,12 +291,205 @@ nav a:hover {
     
     nav a:hover {
         padding-left: 2rem;
+        padding-right: 1rem;
     }
 }
 
-/* Efecto de carga suave */
-@media (prefers-reduced-motion: no-preference) {
-    html {
-        scroll-behavior: smooth;
+/* ========== RESPONSIVE PARA CELULARES PEQUEÑOS (menos de 480px) ========== */
+@media (max-width: 480px) {
+    body {
+        padding: 0.5rem;
+        justify-content: center;
+        text-align: center;
+    }
+    
+    body::before {
+        height: 30px;
+    }
+    
+    .bandera-ecuador {
+        justify-content: center;
+        gap: 6px;
+        margin-bottom: 0.5rem;
+    }
+    
+    .flag-ec {
+        width: 30px;
+    }
+    
+    .ecuador-text {
+        font-size: 0.8rem;
+        letter-spacing: 1px;
+    }
+    
+    h1 {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        text-align: center;
+    }
+    
+    h2 {
+        font-size: 0.7rem;
+        margin-bottom: 1rem;
+        padding: 0.3rem 0.8rem;
+        text-align: center;
+        display: inline-block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    nav {
+        padding: 0.8rem;
+        width: 100%;
+        margin: 0 auto;
+        text-align: center;
+    }
+    
+    nav ul {
+        gap: 0.6rem;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+    }
+    
+    nav li {
+        width: 100%;
+        text-align: center;
+    }
+    
+    nav a {
+        font-size: 0.85rem;
+        padding: 0.6rem 1rem;
+        text-align: center;
+        display: block;
+        width: 100%;
+    }
+    
+    nav a::before {
+        display: none;
+    }
+    
+    nav a:hover {
+        transform: translateY(-2px);
+        padding-left: 1rem;
+    }
+}
+
+/* ========== RESPONSIVE PARA PANTALLAS MUY GRANDES (más de 1200px) ========== */
+@media (min-width: 1200px) {
+    body {
+        justify-content: center;
+    }
+    
+    .flag-ec {
+        width: 60px;
+    }
+    
+    .ecuador-text {
+        font-size: 1.4rem;
+    }
+    
+    h1 {
+        font-size: 3rem;
+    }
+    
+    h2 {
+        font-size: 1.4rem;
+    }
+    
+    nav {
+        margin: 0 auto;
+    }
+    
+    nav a {
+        font-size: 1.6rem;
+        padding: 1rem 2rem;
+    }
+}
+
+/* ========== MEJORAS PARA ORIENTACIÓN HORIZONTAL EN MÓVILES ========== */
+@media (max-width: 768px) and (orientation: landscape) {
+    body {
+        padding: 0.5rem;
+        justify-content: center;
+        min-height: auto;
+    }
+    
+    h1 {
+        font-size: 1.2rem;
+        margin-bottom: 0.3rem;
+    }
+    
+    h2 {
+        font-size: 0.7rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    nav {
+        padding: 0.6rem;
+        margin: 0 auto;
+    }
+    
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 0.8rem;
+    }
+    
+    nav a {
+        font-size: 0.8rem;
+        padding: 0.4rem 1rem;
+    }
+}
+
+/* ========== ACCESIBILIDAD ========== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ========== MEJORAS PARA TACTIL ========== */
+@media (hover: none) and (pointer: coarse) {
+    nav a:active {
+        transform: scale(0.95);
+        background: linear-gradient(135deg, #FFE44D, #FFB347);
+    }
+    
+    .flag-ec:active {
+        transform: scale(1.05);
+    }
+}
+
+/* ========== SOPORTE PARA PANTALLAS MUY PEQUEÑAS (menos de 320px) ========== */
+@media (max-width: 320px) {
+    body {
+        justify-content: center;
+    }
+    
+    h1 {
+        font-size: 0.9rem;
+    }
+    
+    h2 {
+        font-size: 0.6rem;
+    }
+    
+    nav a {
+        font-size: 0.75rem;
+        padding: 0.5rem 0.8rem;
+    }
+    
+    .ecuador-text {
+        font-size: 0.7rem;
+    }
+    
+    .flag-ec {
+        width: 25px;
     }
 }
