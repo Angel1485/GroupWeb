@@ -440,3 +440,39 @@ h1 {
         background: rgba(255, 255, 255, 0.2);
     }
 }
+
+.info-equipo {
+    text-align: left;
+    margin: 1rem 0;
+    padding: 0.5rem;
+    background: rgba(255,255,255,0.05);
+    border-radius: 10px;
+}
+.info-equipo p {
+    margin: 0.5rem 0;
+}
+.jugadores-equipo h2 {
+    color: #FFD700;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+    text-align: center;
+}
+.navegacion-equipos {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1.5rem;
+}
+.btn-equipo {
+    background: rgba(255,215,0,0.2);
+    padding: 5px 10px;
+    border-radius: 20px;
+    text-decoration: none;
+    color: gold;
+    font-size: 0.8rem;
+}
+.btn-equipo:hover {
+    background: gold;
+    color: black;
+}
