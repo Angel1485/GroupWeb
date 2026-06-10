@@ -191,6 +191,71 @@ nav a:hover {
     }
 }
 
+/* ========== GRUPOS MUNDIALISTAS ========== */
+.grupos-mundial {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    margin: 2rem auto;
+    max-width: 900px;
+    width: 95%;
+}
+
+.grupo-card {
+    background: rgba(0, 0, 0, 0.7);
+    backdrop-filter: blur(10px);
+    border-radius: 30px;
+    padding: 1.5rem;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+}
+
+.grupo-card:hover {
+    transform: translateY(-5px);
+    border-color: gold;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+}
+
+.grupo-titulo {
+    text-align: center;
+    font-size: 1.3rem;
+    color: #FFD700;
+    margin-bottom: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.equipos-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+.equipo-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.8rem 1.2rem;
+    border-radius: 20px;
+    text-decoration: none;
+    color: white;
+    transition: all 0.3s ease;
+    min-width: 100px;
+}
+
+.equipo-card:hover {
+    background: rgba(255, 215, 0, 0.3);
+    transform: scale(1.05);
+    color: #FFD700;
+}
+
+.equipo-card span {
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
 /* ========== RESPONSIVE PARA TABLETS (768px - 1024px) ========== */
 @media (max-width: 1024px) and (min-width: 769px) {
     body {
@@ -215,6 +280,19 @@ nav a:hover {
         font-size: 1.2rem;
         padding: 0.7rem 1.3rem;
     }
+    
+    .grupos-mundial {
+        gap: 1.5rem;
+    }
+    
+    .grupo-card {
+        padding: 1.2rem;
+    }
+    
+    .equipo-card {
+        min-width: 90px;
+        padding: 0.7rem 1rem;
+    }
 }
 
 /* ========== RESPONSIVE PARA CELULARES GRANDES (481px - 768px) ========== */
@@ -225,7 +303,6 @@ nav a:hover {
         text-align: center;
     }
     
-    /* Efecto césped más pequeño */
     body::before {
         height: 40px;
     }
@@ -292,6 +369,35 @@ nav a:hover {
     nav a:hover {
         padding-left: 2rem;
         padding-right: 1rem;
+    }
+    
+    /* Grupos Mundialistas */
+    .grupos-mundial {
+        gap: 1.2rem;
+        margin: 1.5rem auto;
+    }
+    
+    .grupo-card {
+        padding: 1rem;
+        border-radius: 20px;
+    }
+    
+    .grupo-titulo {
+        font-size: 1rem;
+        margin-bottom: 1rem;
+    }
+    
+    .equipos-grid {
+        gap: 0.8rem;
+    }
+    
+    .equipo-card {
+        min-width: 80px;
+        padding: 0.6rem 0.8rem;
+    }
+    
+    .equipo-card span {
+        font-size: 0.75rem;
     }
 }
 
@@ -373,6 +479,40 @@ nav a:hover {
         transform: translateY(-2px);
         padding-left: 1rem;
     }
+    
+    /* Grupos Mundialistas */
+    .grupos-mundial {
+        gap: 1rem;
+        margin: 1rem auto;
+    }
+    
+    .grupo-card {
+        padding: 0.8rem;
+        border-radius: 15px;
+    }
+    
+    .grupo-titulo {
+        font-size: 0.85rem;
+        margin-bottom: 0.8rem;
+    }
+    
+    .equipos-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0.6rem;
+    }
+    
+    .equipo-card {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.8rem;
+        min-width: auto;
+        padding: 0.6rem 1rem;
+    }
+    
+    .equipo-card span {
+        font-size: 0.8rem;
+    }
 }
 
 /* ========== RESPONSIVE PARA PANTALLAS MUY GRANDES (más de 1200px) ========== */
@@ -404,6 +544,19 @@ nav a:hover {
     nav a {
         font-size: 1.6rem;
         padding: 1rem 2rem;
+    }
+    
+    .grupos-mundial {
+        max-width: 1000px;
+    }
+    
+    .equipo-card {
+        min-width: 120px;
+        padding: 1rem 1.5rem;
+    }
+    
+    .equipo-card span {
+        font-size: 1rem;
     }
 }
 
@@ -440,33 +593,25 @@ nav a:hover {
         font-size: 0.8rem;
         padding: 0.4rem 1rem;
     }
-}
-
-/* ========== ACCESIBILIDAD ========== */
-@media (prefers-reduced-motion: reduce) {
-    *,
-    *::before,
-    *::after {
-        animation-duration: 0.01ms !important;
-        animation-iteration-count: 1 !important;
-        transition-duration: 0.01ms !important;
-        scroll-behavior: auto !important;
-    }
-}
-
-/* ========== MEJORAS PARA TACTIL ========== */
-@media (hover: none) and (pointer: coarse) {
-    nav a:active {
-        transform: scale(0.95);
-        background: linear-gradient(135deg, #FFE44D, #FFB347);
+    
+    /* Grupos en horizontal */
+    .equipos-grid {
+        flex-direction: row;
+        flex-wrap: wrap;
     }
     
-    .flag-ec:active {
-        transform: scale(1.05);
+    .equipo-card {
+        flex-direction: column;
+        min-width: 70px;
+        padding: 0.5rem;
+    }
+    
+    .equipo-card span {
+        font-size: 0.7rem;
     }
 }
 
-/* ========== SOPORTE PARA PANTALLAS MUY PEQUEÑAS (menos de 320px) ========== */
+/* ========== PANTALLAS MUY PEQUEÑAS (menos de 320px) ========== */
 @media (max-width: 320px) {
     body {
         justify-content: center;
@@ -491,5 +636,139 @@ nav a:hover {
     
     .flag-ec {
         width: 25px;
+    }
+    
+    .grupo-card {
+        padding: 0.6rem;
+    }
+    
+    .grupo-titulo {
+        font-size: 0.75rem;
+    }
+    
+    .equipo-card {
+        padding: 0.5rem 0.8rem;
+    }
+    
+    .equipo-card span {
+        font-size: 0.7rem;
+    }
+}
+
+/* ========== ACCESIBILIDAD ========== */
+@media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+        scroll-behavior: auto !important;
+    }
+}
+
+/* ========== MEJORAS PARA TACTIL ========== */
+@media (hover: none) and (pointer: coarse) {
+    nav a:active {
+        transform: scale(0.95);
+        background: linear-gradient(135deg, #FFE44D, #FFB347);
+    }
+    
+    .flag-ec:active {
+        transform: scale(1.05);
+    }
+    
+    .equipo-card:active {
+        background: rgba(255, 215, 0, 0.3);
+        transform: scale(0.98);
+    }
+}
+
+/* ========== BANDERAS RESPONSIVAS ========== */
+/* Las banderas usan la clase .bandera y .flag-ec */
+
+/* Desktop base */
+.bandera {
+    width: 35px;
+    height: auto;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+}
+
+.flag-ec {
+    width: 50px;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+}
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) and (min-width: 769px) {
+    .bandera {
+        width: 32px;
+    }
+    .flag-ec {
+        width: 45px;
+    }
+}
+
+/* Celulares grandes (481px - 768px) */
+@media (max-width: 768px) {
+    .bandera {
+        width: 30px;
+    }
+    .flag-ec {
+        width: 40px;
+    }
+}
+
+/* Celulares pequeños (menos de 480px) */
+@media (max-width: 480px) {
+    .bandera {
+        width: 28px;
+    }
+    .flag-ec {
+        width: 35px;
+    }
+}
+
+/* Pantallas muy pequeñas (menos de 320px) */
+@media (max-width: 320px) {
+    .bandera {
+        width: 25px;
+    }
+    .flag-ec {
+        width: 30px;
+    }
+}
+
+/* Pantallas muy grandes (más de 1200px) */
+@media (min-width: 1200px) {
+    .bandera {
+        width: 40px;
+    }
+    .flag-ec {
+        width: 60px;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+    .bandera {
+        width: 25px;
+    }
+    .flag-ec {
+        width: 35px;
+    }
+}
+
+/* Mejoras táctil para banderas */
+@media (hover: none) and (pointer: coarse) {
+    .bandera, .flag-ec {
+        transition: transform 0.1s ease;
+    }
+    .bandera:active, .flag-ec:active {
+        transform: scale(0.95);
     }
 }
