@@ -22,6 +22,20 @@ const integrantes = [
         nombre: "Andres Sarango Colaborador",
         rol: "Fronted Enginner",
         bio: "Especialista en Sistemas Integrados."
+    },
+
+    {
+        id: 4,
+        nombre: "Andres Sarango Feature/Colaborador",
+        rol: "Fronted Enginner Feature / Full Stack",
+        bio: "Especialista en Verisones de GitHub."
+    },
+
+    {
+        id: 5,
+        nombre: "Feature/Colaborador",
+        rol: "Fronted Enginner Feature / Full Stack",
+        bio: "Especialista en Verisones de GitHub."
     }
 ];
 
