@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Álbum de Cromos - Mundial 2026</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="jugadores.css" />
+</head>
+<body>
+    <!-- Bandera Ecuador -->
+    <div class="bandera-ecuador">
+        <img src="https://flagicons.lipis.dev/flags/4x3/ec.svg" alt="Bandera de Ecuador" class="flag-ec" />
+        <span class="ecuador-text">Ecuador</span>
+    </div>
+
+    <h1>🌟 Álbum Virtual de Cromos 🌟</h1>
+    <h2>Mundial de Fútbol 2026</h2>
+
+    <!-- Barra de herramientas (Estudiante E) -->
+    <div class="toolbar">
+        <input type="text" id="buscador" placeholder="🔍 Buscar jugador..." />
+        <select id="filtroPais">
+            <option value="todos">🌍 Todos los países</option>
+        </select>
+    </div>
+
+    <!-- Contador de cromos desbloqueados (Estudiante F) -->
+    <div class="contador-cromos">
+        <span>📊 Progreso: <span id="progreso">0%</span></span>
+    </div>
+
+    <!-- Contenedor del álbum -->
+    <div id="albumContainer" class="album-grid"></div>
+
+    <!-- Botón volver -->
+    <div class="boton-volver">
+        <a href="index.html" class="btn-inicio">← Volver al Inicio</a>
+    </div>
+
+    <script src="jugadores.js"></script>
+</body>
+</html>
