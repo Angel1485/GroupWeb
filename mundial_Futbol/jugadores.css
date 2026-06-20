@@ -1,0 +1,317 @@
+/* ========================================
+   DEV A + DEV D — UI/UX Y FONDOS DINÁMICOS
+   ======================================== */
+
+/* ========== ÁLBUM DE CROMOS ========== */
+.album-grid {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+    max-width: 1200px;
+    margin: 2rem auto;
+    padding: 1rem;
+}
+
+/* Tarjeta de cromo - Diseño moderno */
+.card-cromo {
+    border-radius: 20px;
+    padding: 1.2rem;
+    width: 220px;
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeInUp 0.6s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Efecto hover - solo la tarjeta, no la imagen */
+.card-cromo:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.4);
+    border-color: gold;
+}
+
+/* Sombra interior brillante */
+.card-cromo::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(255, 215, 0, 0.05) 0%, transparent 70%);
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    pointer-events: none;
+}
+
+.card-cromo:hover::before {
+    opacity: 1;
+}
+
+/* Badge de destacado */
+.badge-destacado {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #1a1a2e;
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 3px 10px;
+    border-radius: 20px;
+    box-shadow: 0 3px 10px rgba(255, 215, 0, 0.3);
+    z-index: 2;
+}
+
+/* Imagen del jugador - SIN ESCALADO */
+.card-cromo img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 3px solid gold;
+    margin-bottom: 0.8rem;
+    transition: border-color 0.3s ease;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Solo cambia el borde de la imagen al hacer hover */
+.card-cromo:hover img {
+    border-color: #FFA500;
+}
+
+/* Bandera del país */
+.card-cromo .bandera-mini {
+    width: 35px;
+    height: auto;
+    border-radius: 5px;
+    margin-bottom: 0.5rem;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Nombre del jugador */
+.card-cromo h3 {
+    color: #FFD700;
+    font-size: 1.1rem;
+    margin: 0.5rem 0;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+.card-cromo .pais {
+    color: #e0e0e0;
+    font-size: 0.9rem;
+    font-weight: bold;
+}
+
+.card-cromo .posicion {
+    color: #aaa;
+    font-size: 0.85rem;
+    margin: 0.3rem 0;
+}
+
+/* Estadísticas */
+.card-cromo .estadisticas {
+    font-size: 0.8rem;
+    color: #ccc;
+    margin: 0.5rem 0;
+    padding: 0.3rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+.card-cromo .estadisticas span {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+/* Curiosidad */
+.card-cromo .curiosidad {
+    font-size: 0.75rem;
+    color: #aaa;
+    font-style: italic;
+    margin: 0.5rem 0;
+    padding: 0.5rem;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    border-left: 2px solid gold;
+    text-align: left;
+}
+
+/* ========== CROMO BLOQUEADO ========== */
+.card-cromo.bloqueado {
+    filter: grayscale(100%) blur(2px);
+    opacity: 0.6;
+    pointer-events: none;
+}
+
+.card-cromo.bloqueado .btn-desbloquear {
+    pointer-events: auto;
+    filter: none;
+    opacity: 1;
+}
+
+/* ========== BOTÓN DESBLOQUEAR ========== */
+.btn-desbloquear {
+    display: inline-block;
+    background: linear-gradient(135deg, #FF6B6B, #EE5A24);
+    color: white;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 25px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+    font-size: 0.8rem;
+}
+
+.btn-desbloquear:hover {
+    transform: scale(1.05);
+    box-shadow: 0 5px 15px rgba(238, 90, 36, 0.4);
+}
+
+/* ========== ANIMACIONES ========== */
+@keyframes flash {
+    0% { filter: brightness(1); }
+    50% { filter: brightness(1.5); }
+    100% { filter: brightness(1); }
+}
+
+.card-cromo.desbloqueado {
+    animation: flash 0.5s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ========== HERRAMIENTAS ========== */
+.toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+    margin: 1.5rem auto;
+    max-width: 600px;
+}
+
+.toolbar input,
+.toolbar select {
+    padding: 0.6rem 1rem;
+    border-radius: 30px;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    background: rgba(0, 0, 0, 0.7);
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+}
+
+.toolbar input:focus,
+.toolbar select:focus {
+    outline: none;
+    border-color: gold;
+    box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+}
+
+.toolbar input::placeholder {
+    color: #888;
+}
+
+.toolbar select option {
+    background: #1a1a2e;
+    color: white;
+}
+
+/* ========== CONTADOR DE PROGRESO ========== */
+.contador-cromos {
+    text-align: center;
+    margin: 1rem auto;
+    padding: 0.8rem 2rem;
+    background: rgba(0, 0, 0, 0.7);
+    border-radius: 50px;
+    display: inline-block;
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    font-size: 1.1rem;
+    color: #e0e0e0;
+}
+
+.contador-cromos span {
+    color: #FFD700;
+    font-weight: bold;
+}
+
+/* ========== RESPONSIVE ========== */
+/* Tablets */
+@media (max-width: 768px) {
+    .card-cromo {
+        width: 180px;
+        padding: 1rem;
+    }
+    .card-cromo img {
+        width: 80px;
+        height: 80px;
+    }
+    .toolbar {
+        flex-direction: column;
+        align-items: center;
+        padding: 0 1rem;
+    }
+    .toolbar input,
+    .toolbar select {
+        width: 100%;
+        max-width: 300px;
+    }
+}
+
+/* Celulares */
+@media (max-width: 480px) {
+    .card-cromo {
+        width: 90%;
+        max-width: 250px;
+        margin: 0 auto;
+    }
+    .contador-cromos {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.2rem;
+    }
+}
+
+/* Pantallas grandes */
+@media (min-width: 1200px) {
+    .card-cromo {
+        width: 250px;
+        padding: 1.5rem;
+    }
+    .card-cromo img {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Orientación horizontal en móviles */
+@media (max-width: 768px) and (orientation: landscape) {
+    .album-grid {
+        gap: 0.8rem;
+    }
+    .card-cromo {
+        width: 160px;
+        padding: 0.8rem;
+    }
+    .card-cromo img {
+        width: 60px;
+        height: 60px;
+    }
+}

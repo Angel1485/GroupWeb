@@ -179,7 +179,29 @@ function generarTablaAmortizacionFrancesa(monto, tasaMensual, numeroMeses, fecha
         saldo = saldoRestante;
         if(saldo <= 0.01) break;
     }
-    return tabla;
+     // Calcular totales
+    let totalCapital = 0;
+    let totalInteres = 0;
+    let totalCuota = 0;
+    
+    for(let i = 0; i < tabla.length; i++) {
+        totalCapital += tabla[i].capital;
+        totalInteres += tabla[i].interes;
+        totalCuota += tabla[i].cuotaTotal;
+    }
+    
+    // Agregar fila TOTAL
+    tabla.push({
+        cuota: "TOTAL",
+        fecha: "",
+        capital: +totalCapital.toFixed(2),
+        interes: +totalInteres.toFixed(2),
+        cuotaTotal: +totalCuota.toFixed(2),
+        saldo: 0
+    });
+    
+    return tabla;  
+
 }
 
 // Generar tabla de amortización - Sistema Alemán (capital constante)
@@ -315,7 +337,8 @@ function calcularSaldoPendienteReal(credito) {
 function manejarSimulacionCredito() {
     const selectorCliente = document.getElementById('loanClientSelect');
     const idCliente = parseInt(selectorCliente.value);
-    
+    const nombreCliente = selectorCliente.options[selectorCliente.selectedIndex]?.text || "Cliente";
+
     if(!idCliente) { 
         alert("Por favor, selecciona un cliente en 'Solicitar Crédito'"); 
         return; 
@@ -336,11 +359,11 @@ function manejarSimulacionCredito() {
     if(resultado.error) {
         alert(resultado.error);
     } else {
-        mostrarTablaAmortizacionEnPantalla(resultado.tabla);
+        mostrarTablaAmortizacionEnPantalla(resultado.tabla , nombreCliente);
         
         const cuotaEjemplo = resultado.tabla[0].cuotaTotal;
         const resumenDiv = document.getElementById('simulationSummary');
-        resumenDiv.innerHTML = `<strong>✅ Simulación exitosa</strong><br>📌 Cuota mensual aprox: $${cuotaEjemplo} (${tipoAmortizacion === 'frances' ? 'fija' : 'variable decreciente'})<br>📊 Interés compuesto mensual: ${(tasaAnual/12).toFixed(3)}% · Plazo: ${plazoMeses} meses`;
+        resumenDiv.innerHTML = `<strong>✅ Simulación exitosa - ${nombreCliente}</strong><br>📌 Cuota mensual aprox: $${cuotaEjemplo} (${tipoAmortizacion === 'frances' ? 'fija' : 'variable decreciente'})<br>📊 Interés compuesto mensual: ${(tasaAnual/12).toFixed(3)}% · Plazo: ${plazoMeses} meses`;
         
         actualizarSelectoresDeClientes();
         actualizarEstadoCreditoEnPantalla();
@@ -387,8 +410,9 @@ function manejarRegistroPago() {
         const saldoReal = calcularSaldoPendienteReal(credito);
         const totalPagado = credito.pagosRealizados.length;
         const totalCuotas = credito.tablaAmortizacion.length;
-        const cuotasRestantes = totalCuotas - totalPagado;
-        
+        const cuotasRestantes = (totalCuotas - 1) - totalPagado;
+        //Cambio para que no se visualzie la cueto total
+
         detalleDiv.innerHTML = `
             <strong>🧑 Cliente: ${cliente.nombre}</strong><br>
             <strong>💳 Detalle del pago:</strong><br>
@@ -397,14 +421,14 @@ function manejarRegistroPago() {
             • Capital abonado: $${cuotaPagada.capital}<br>
             • Interés pagado: $${cuotaPagada.interes}<br>
             • <strong>Saldo restante del crédito: $${saldoReal.toFixed(2)}</strong><br>
-            • Progreso: ${totalPagado}/${totalCuotas} cuotas pagadas<br>
+            • Progreso: ${totalPagado}/${totalCuotas - 1} cuotas pagadas<br>  
             • Cuotas pendientes: ${cuotasRestantes}
         `;
         
         mostrarTablaAmortizacionEnPantalla(cliente.credito.tablaAmortizacion);
         
         const resumenDiv = document.getElementById('simulationSummary');
-        resumenDiv.innerHTML = `<strong>📌 Crédito de ${cliente.nombre} actualizado</strong><br>Pagos registrados: ${totalPagado}/${totalCuotas}<br>Saldo pendiente: $${saldoReal.toFixed(2)}`;
+        resumenDiv.innerHTML = `<strong>📌 Crédito de ${cliente.nombre} actualizado</strong><br>Pagos registrados: ${totalPagado}/${totalCuotas - 1}<br>Saldo pendiente: $${saldoReal.toFixed(2)}`;
         
         actualizarEstadoCreditoEnPantalla();
         document.getElementById('paymentQuotaNum').value = '';
