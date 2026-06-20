@@ -334,14 +334,32 @@ function actualizarProgreso() {
 }
 
 // ========================================
-// FUNCIÓN PARA FILTRAR ÁLBUM
+// DEV E — FILTROS Y BÚSQUEDA
 // ========================================
 
+// Función para poblar el select con países únicos
+function poblarFiltroPaises() {
+    const select = document.getElementById('filtroPais');
+    if (!select) return;
+
+    const paises = [...new Set(cromosMundial.map(j => j.pais))];
+    paises.sort();
+
+    paises.forEach(pais => {
+        const option = document.createElement('option');
+        option.value = pais;
+        option.textContent = pais;
+        select.appendChild(option);
+    });
+}
+
+// Función de filtrado mejorada
 function filtrarAlbum() {
     const busqueda = document.getElementById('buscador')?.value.toLowerCase().trim() || '';
     const paisFiltro = document.getElementById('filtroPais')?.value || 'todos';
 
     const cards = document.querySelectorAll('.card-cromo');
+
     let visibles = 0;
 
     cards.forEach((card, index) => {
@@ -353,9 +371,11 @@ function filtrarAlbum() {
 
         const visible = coincideNombre && coincidePais;
         card.style.display = visible ? 'block' : 'none';
+        
         if (visible) visibles++;
     });
 
+    // Actualizar mensaje de resultados
     const container = document.getElementById('albumContainer');
     const mensajeExistente = document.querySelector('.mensaje-filtro');
     
@@ -376,25 +396,6 @@ function filtrarAlbum() {
     } else if (mensajeExistente) {
         mensajeExistente.remove();
     }
-}
-
-// ========================================
-// FUNCIÓN PARA POBLAR FILTRO DE PAÍSES
-// ========================================
-
-function poblarFiltroPaises() {
-    const select = document.getElementById('filtroPais');
-    if (!select) return;
-
-    const paises = [...new Set(cromosMundial.map(j => j.pais))];
-    paises.sort();
-
-    paises.forEach(pais => {
-        const option = document.createElement('option');
-        option.value = pais;
-        option.textContent = pais;
-        select.appendChild(option);
-    });
 }
 
 // ========================================
@@ -428,10 +429,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Renderizar álbum
     renderizarAlbum();
     
-    // Poblar filtros
+    // Poblar filtros (DEV E)
     poblarFiltroPaises();
     
-    // Configurar eventos
+    // Configurar eventos (DEV E)
     const buscador = document.getElementById('buscador');
     const filtroPais = document.getElementById('filtroPais');
     
@@ -444,6 +445,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     console.log(`✅ Álbum inicializado con ${cromosMundial.length} jugadores`);
+    console.log(`✅ DEV E: Filtros de búsqueda implementados`);
 });
 
 // Función para desbloquear todos (modo desarrollador)
