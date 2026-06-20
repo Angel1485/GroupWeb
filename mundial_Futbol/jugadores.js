@@ -268,54 +268,10 @@ function renderizarAlbum() {
 }
 
 // ========================================
-// FUNCIÓN PARA DESBLOQUEAR CROMO
+// DEV F — GAMIFICACIÓN Y ANIMACIONES
 // ========================================
 
-function desbloquearCromo(index) {
-    if (cromosMundial[index].desbloqueado) {
-        const cards = document.querySelectorAll('.card-cromo');
-        const card = cards[index];
-        if (card) {
-            card.style.borderColor = '#FFD700';
-            setTimeout(() => {
-                card.style.borderColor = '';
-            }, 500);
-        }
-        return;
-    }
-    
-    cromosMundial[index].desbloqueado = true;
-    
-    const cards = document.querySelectorAll('.card-cromo');
-    const card = cards[index];
-    
-    if (card) {
-        card.classList.remove('bloqueado');
-        card.classList.add('desbloqueado');
-        card.style.animation = 'flash 0.6s ease';
-        
-        setTimeout(() => {
-            card.classList.remove('desbloqueado');
-            card.style.animation = '';
-        }, 700);
-    }
-    
-    actualizarProgreso();
-    
-    const total = cromosMundial.length;
-    const desbloqueados = cromosMundial.filter(j => j.desbloqueado).length;
-    
-    if (desbloqueados === total && total > 0) {
-        setTimeout(() => {
-            alert('🎉 ¡FELICIDADES! Has desbloqueado todos los cromos del álbum.');
-        }, 500);
-    }
-}
-
-// ========================================
-// FUNCIÓN PARA ACTUALIZAR PROGRESO
-// ========================================
-
+// Función para actualizar progreso
 function actualizarProgreso() {
     const total = cromosMundial.length;
     if (total === 0) {
@@ -330,6 +286,61 @@ function actualizarProgreso() {
     
     if (progreso) {
         progreso.textContent = `${porcentaje}% (${desbloqueados}/${total})`;
+    }
+}
+
+// Función para desbloquear cromo con animación mejorada
+function desbloquearCromo(index) {
+    if (cromosMundial[index].desbloqueado) {
+        // Si ya está desbloqueado, mostrar mensaje sutil
+        const cards = document.querySelectorAll('.card-cromo');
+        const card = cards[index];
+        if (card) {
+            card.style.borderColor = '#FFD700';
+            setTimeout(() => {
+                card.style.borderColor = '';
+            }, 500);
+        }
+        return;
+    }
+    
+    // Marcar como desbloqueado
+    cromosMundial[index].desbloqueado = true;
+    
+    const cards = document.querySelectorAll('.card-cromo');
+    const card = cards[index];
+    
+    if (card) {
+        // Remover estado bloqueado
+        card.classList.remove('bloqueado');
+        
+        // Agregar clase de desbloqueo para animación
+        card.classList.add('desbloqueado');
+        
+        // Efecto de destello personalizado
+        card.style.animation = 'flash 0.6s ease';
+        
+        // Efecto de confeti o celebración (simple)
+        card.innerHTML += '<span style="position:absolute; top:-10px; right:-10px; font-size:2rem;">✨</span>';
+        
+        // Remover la animación después de que termine
+        setTimeout(() => {
+            card.classList.remove('desbloqueado');
+            card.style.animation = '';
+        }, 700);
+    }
+    
+    // Actualizar contador
+    actualizarProgreso();
+    
+    // Verificar si se completó el álbum
+    const total = cromosMundial.length;
+    const desbloqueados = cromosMundial.filter(j => j.desbloqueado).length;
+    
+    if (desbloqueados === total && total > 0) {
+        setTimeout(() => {
+            alert('🎉 ¡FELICIDADES! Has desbloqueado todos los cromos del álbum.');
+        }, 500);
     }
 }
 
@@ -399,6 +410,28 @@ function filtrarAlbum() {
 }
 
 // ========================================
+// FUNCIÓN PARA DESBLOQUEAR TODOS (MODO DESARROLLADOR)
+// ========================================
+
+function desbloquearTodos() {
+    cromosMundial.forEach((jugador) => {
+        jugador.desbloqueado = true;
+    });
+    
+    const cards = document.querySelectorAll('.card-cromo');
+    cards.forEach(card => {
+        card.classList.remove('bloqueado');
+        card.classList.add('desbloqueado');
+        setTimeout(() => {
+            card.classList.remove('desbloqueado');
+        }, 600);
+    });
+    
+    actualizarProgreso();
+    alert('🎯 Todos los cromos han sido desbloqueados!');
+}
+
+// ========================================
 // INICIALIZACIÓN
 // ========================================
 
@@ -446,25 +479,7 @@ document.addEventListener('DOMContentLoaded', () => {
     
     console.log(`✅ Álbum inicializado con ${cromosMundial.length} jugadores`);
     console.log(`✅ DEV E: Filtros de búsqueda implementados`);
+    console.log(`✅ DEV F: Sistema de gamificación implementado`);
 });
-
-// Función para desbloquear todos (modo desarrollador)
-function desbloquearTodos() {
-    cromosMundial.forEach((jugador) => {
-        jugador.desbloqueado = true;
-    });
-    
-    const cards = document.querySelectorAll('.card-cromo');
-    cards.forEach(card => {
-        card.classList.remove('bloqueado');
-        card.classList.add('desbloqueado');
-        setTimeout(() => {
-            card.classList.remove('desbloqueado');
-        }, 600);
-    });
-    
-    actualizarProgreso();
-    alert('🎯 Todos los cromos han sido desbloqueados!');
-}
 
 console.log('✅ Archivo jugadores.js cargado correctamente');
