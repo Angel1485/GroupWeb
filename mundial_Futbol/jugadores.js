@@ -5,6 +5,26 @@
 // Arreglo global de cromos
 const cromosMundial = [];
 
+// Función constructora de jugador
+function crearJugador(id, nombre, pais, posicion, urlImagen, urlBandera, colorFondoHex, estadisticas, destacado, curiosidad) {
+    return {
+        id: id,
+        nombre: nombre,
+        pais: pais,
+        posicion: posicion,
+        urlImagen: urlImagen,
+        urlBandera: urlBandera,
+        colorFondoHex: colorFondoHex,
+        estadisticas: {
+            goles: estadisticas.goles || 0,
+            partidos: estadisticas.partidos || 0
+        },
+        destacado: destacado || false,
+        curiosidad: curiosidad || '',
+        desbloqueado: false
+    };
+}
+
 // ========================================
 // DEV B — DATOS GRUPOS A y B
 // ========================================
@@ -85,14 +105,110 @@ function cargarDatosGrupoAB() {
         }
     ];
 
-    // Agregar datos al arreglo global
     datos.forEach(jugador => {
         cromosMundial.push(jugador);
     });
 
     console.log(`✅ DEV B: ${datos.length} jugadores agregados (Grupos A y B)`);
-    console.log('📋 Datos cargados:', cromosMundial);
 }
+
+// ========================================
+// DEV C — DATOS GRUPOS C y D
+// ========================================
+
+function cargarDatosGrupoCD() {
+    const datos = [
+        {
+            id: 7,
+            nombre: "Lionel Messi",
+            pais: "Argentina",
+            posicion: "Delantero",
+            urlImagen: "https://cdn.pixabay.com/photo/2020/05/11/15/38/soccer-5157807_640.png",
+            urlBandera: "https://flagicons.lipis.dev/flags/4x3/ar.svg",
+            colorFondoHex: "#75aadb",
+            estadisticas: { goles: 106, partidos: 185 },
+            destacado: true,
+            curiosidad: "Máximo ganador del Balón de Oro con 8 trofeos."
+        },
+        {
+            id: 8,
+            nombre: "Kylian Mbappé",
+            pais: "Francia",
+            posicion: "Delantero",
+            urlImagen: "https://cdn.pixabay.com/photo/2020/05/11/15/38/soccer-5157807_640.png",
+            urlBandera: "https://flagicons.lipis.dev/flags/4x3/fr.svg",
+            colorFondoHex: "#002395",
+            estadisticas: { goles: 46, partidos: 78 },
+            destacado: true,
+            curiosidad: "Jugador más joven en marcar en una final de Mundial."
+        },
+        {
+            id: 9,
+            nombre: "Antoine Griezmann",
+            pais: "Francia",
+            posicion: "Delantero",
+            urlImagen: "https://cdn.pixabay.com/photo/2020/05/11/15/38/soccer-5157807_640.png",
+            urlBandera: "https://flagicons.lipis.dev/flags/4x3/fr.svg",
+            colorFondoHex: "#002395",
+            estadisticas: { goles: 44, partidos: 127 },
+            destacado: false,
+            curiosidad: "Máximo asistidor en la historia de la selección francesa."
+        },
+        {
+            id: 10,
+            nombre: "Christian Eriksen",
+            pais: "Dinamarca",
+            posicion: "Mediocampista",
+            urlImagen: "https://cdn.pixabay.com/photo/2020/05/11/15/38/soccer-5157807_640.png",
+            urlBandera: "https://flagicons.lipis.dev/flags/4x3/dk.svg",
+            colorFondoHex: "#c60c30",
+            estadisticas: { goles: 42, partidos: 135 },
+            destacado: false,
+            curiosidad: "Regresó a jugar después de un paro cardíaco en la Euro 2020."
+        },
+        {
+            id: 11,
+            nombre: "Andreas Christensen",
+            pais: "Dinamarca",
+            posicion: "Defensa",
+            urlImagen: "https://cdn.pixabay.com/photo/2020/05/11/15/38/soccer-5157807_640.png",
+            urlBandera: "https://flagicons.lipis.dev/flags/4x3/dk.svg",
+            colorFondoHex: "#c60c30",
+            estadisticas: { goles: 2, partidos: 70 },
+            destacado: false,
+            curiosidad: "Defensa titular en la selección danesa."
+        },
+        {
+            id: 12,
+            nombre: "Christian Pulisic",
+            pais: "Estados Unidos",
+            posicion: "Delantero",
+            urlImagen: "https://cdn.pixabay.com/photo/2020/05/11/15/38/soccer-5157807_640.png",
+            urlBandera: "https://flagicons.lipis.dev/flags/4x3/us.svg",
+            colorFondoHex: "#3c3b6e",
+            estadisticas: { goles: 28, partidos: 68 },
+            destacado: false,
+            curiosidad: "Primer estadounidense en ganar la Champions League."
+        }
+    ];
+
+    datos.forEach(jugador => {
+        cromosMundial.push(jugador);
+    });
+
+    console.log(`✅ DEV C: ${datos.length} jugadores agregados (Grupos C y D)`);
+    
+    const totalGoles = datos.reduce((sum, j) => sum + j.estadisticas.goles, 0);
+    console.log(`⚽ Total de goles (Grupos C y D): ${totalGoles}`);
+    return totalGoles;
+}
+
+// ========================================
+// CARGAR DATOS
+// ========================================
+
+cargarDatosGrupoAB();
+const totalGolesCD = cargarDatosGrupoCD();
 
 // ========================================
 // FUNCIÓN DE RENDERIZADO
@@ -104,9 +220,6 @@ function renderizarAlbum() {
         console.error('❌ No se encontró el contenedor del álbum');
         return;
     }
-
-    console.log('🔄 Renderizando álbum...');
-    console.log(`📊 Total de jugadores: ${cromosMundial.length}`);
 
     if (cromosMundial.length === 0) {
         container.innerHTML = `
@@ -288,12 +401,29 @@ function poblarFiltroPaises() {
 // INICIALIZACIÓN
 // ========================================
 
-// 1. Primero cargar los datos
-cargarDatosGrupoAB();
-
-// 2. Luego renderizar cuando el DOM esté listo
 document.addEventListener('DOMContentLoaded', () => {
     console.log('🌟 Álbum de Cromos - Mundial 2026');
+    
+    // Mostrar total de goles en la página
+    const container = document.getElementById('albumContainer');
+    if (container && totalGolesCD > 0) {
+        const infoGoles = document.createElement('div');
+        infoGoles.style.cssText = `
+            text-align: center;
+            width: 100%;
+            padding: 1rem;
+            margin: 1rem 0;
+            background: rgba(255,215,0,0.1);
+            border-radius: 15px;
+            border: 1px solid rgba(255,215,0,0.3);
+        `;
+        infoGoles.innerHTML = `
+            <p style="color: #FFD700; font-size: 1.2rem;">
+                ⚽ Goles totales (Grupos C y D): <strong>${totalGolesCD}</strong>
+            </p>
+        `;
+        container.prepend(infoGoles);
+    }
     
     // Renderizar álbum
     renderizarAlbum();
