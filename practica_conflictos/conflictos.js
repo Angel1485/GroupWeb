@@ -36,6 +36,13 @@ const integrantes = [
         nombre: "Feature/Colaborador",
         rol: "Fronted Enginner Feature / Full Stack",
         bio: "Especialista en Verisones de GitHub."
+    },
+
+    {
+        id: 5,
+        nombre: "Evaluacion/Git",
+        rol: "Fronted Enginner ",
+        bio: "Especialista en Verisones de GitHub."
     }
 ];
 
